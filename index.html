@@ -40,12 +40,49 @@
             font-size: 1.8rem;
             font-weight: bold;
             color: white;
+            white-space: nowrap;
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+                white-space: normal;
+                flex-basis: 100%;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+                flex-basis: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                gap: 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .nav-links a {
+                padding: 0.5rem;
+            }
         }
 
         .nav-links a {
@@ -96,6 +133,26 @@
             color: #4a148c;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
         }
 
         .tagline {
