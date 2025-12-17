@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Nurture - Homemade Cake Business</title>
+    <title>A Nurture - Homemade Cakes</title>
     <style>
         * {
             margin: 0;
@@ -314,6 +314,13 @@
             font-size: 4rem;
         }
 
+        .cake-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         @media (max-width: 480px) {
             .cake-image {
                 height: 200px;
@@ -400,6 +407,14 @@
             font-size: 3rem;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            display: block;
         }
 
         @media (max-width: 480px) {
@@ -768,7 +783,7 @@
         <h2 class="section-title">Our Special Creations</h2>
         <div class="menu-grid">
             <div class="cake-card">
-                <div class="cake-image">🐉</div>
+                <div class="cake-image"><img src="Dragon Fruit cake.jpg" alt="Dragon Cupcake"></div>
                 <div class="cake-content">
                     <h3 class="cake-title">Dragon Cupcake</h3>
                     <p class="cake-description">A playful and magical cupcake inspired by fantasy worlds. Soft, moist, and topped with vibrant dragon-style frosting, this cupcake brings joy to kids and adults alike. The perfect treat for themed parties and special moments.</p>
@@ -777,7 +792,7 @@
             </div>
 
             <div class="cake-card">
-                <div class="cake-image">🍇</div>
+                <div class="cake-image"><img src="mixed fruit cake.jpg" alt="Mixed Fruit Cake"></div>
                 <div class="cake-content">
                     <h3 class="cake-title">Mixed Fruit Cake</h3>
                     <p class="cake-description">A light, refreshing cake loaded with seasonal fruits. This soft and juicy homemade cake offers a balance of natural sweetness and fresh flavors. Loved by customers who enjoy a healthier and wholesome dessert option.</p>
@@ -786,7 +801,7 @@
             </div>
 
             <div class="cake-card">
-                <div class="cake-image">🍉</div>
+                <div class="cake-image"><img src="waterMelon and Strawbeery cake.jpg" alt="Watermelon & Strawberry Cake"></div>
                 <div class="cake-content">
                     <h3 class="cake-title">Watermelon & Strawberry Cake</h3>
                     <p class="cake-description">A refreshing, fruity delight made with the coolness of watermelon and the sweetness of strawberries. This cake feels light, clean, and perfect for summer days. Ideal for those who enjoy natural and refreshing flavors.</p>
@@ -795,7 +810,7 @@
             </div>
 
             <div class="cake-card">
-                <div class="cake-image">🎂</div>
+                <div class="cake-image"><img src="cupcake1.jpg" alt="Traditional Cake"></div>
                 <div class="cake-content">
                     <h3 class="cake-title">Traditional Cake</h3>
                     <p class="cake-description">A classic homemade cake that brings back nostalgic memories of simple, pure, old-fashioned baking. Soft, rich, and filled with the warmth of traditional flavors, this cake is perfect for festivals, family gatherings, and anyone who loves authentic homemade taste.</p>
@@ -808,12 +823,12 @@
     <section id="gallery" class="section gallery">
         <h2 class="section-title">Gallery</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">🎂</div>
-            <div class="gallery-item">🧁</div>
-            <div class="gallery-item">🍰</div>
-            <div class="gallery-item">🍓</div>
-            <div class="gallery-item">🍇</div>
-            <div class="gallery-item">🍉</div>
+            <div class="gallery-item"><img src="Dragon Fruit cake.jpg" alt="Dragon Cupcake"></div>
+            <div class="gallery-item"><img src="mixed fruit cake.jpg" alt="Mixed Fruit Cake"></div>
+            <div class="gallery-item"><img src="waterMelon and Strawbeery cake.jpg" alt="Watermelon & Strawberry Cake"></div>
+            <div class="gallery-item"><img src="cupcake1.jpg" alt="Cupcake 1"></div>
+            <div class="gallery-item"><img src="cupcake2.jpg" alt="Cupcake 2"></div>
+            <div class="gallery-item"><img src="mixed fruit cake.jpg" alt="Mixed Fruit Cake"></div>
         </div>
     </section>
 
