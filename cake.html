@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Nurture - Homemade Cake Business</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #e0c3fc 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #4a148c;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #6a1b9a;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .highlight {
+            background: rgba(255,255,255,0.9);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            color: #e91e63;
+            font-weight: 600;
+            margin-top: 1rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #4a148c;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .about-content {
+            background: linear-gradient(135deg, #fff5f7 0%, #f3e5f5 100%);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .cake-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cake-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+
+        .cake-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .cake-content {
+            padding: 2rem;
+        }
+
+        .cake-title {
+            font-size: 1.5rem;
+            color: #4a148c;
+            margin-bottom: 1rem;
+        }
+
+        .cake-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-range {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .gallery {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #e0c3fc 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 15px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #4a148c;
+        }
+
+        .order-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .order-section .section-title {
+            color: white;
+        }
+
+        .order-section .section-title::after {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.2);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+
+        .order-form {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #4a148c;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            background: #2c003e;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">A Nurture</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#order">Order</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>A Nurture</h1>
+            <p class="tagline">Fresh • Pure • Homemade With Love</p>
+            <div class="highlight">🍰 100% Homemade • Fresh Ingredients • Made on Order Only 🍰</div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <p>Welcome to A Nurture, where every cake is lovingly crafted in the warmth of our home kitchen. We believe in the magic of pure, homemade baking—using only the freshest, highest-quality ingredients with absolutely zero preservatives. Each creation is made with personal care, attention to detail, and a sprinkle of love.</p>
+            <p style="margin-top: 1.5rem;">Our commitment to hygiene, purity, and custom-made freshness means that every order is prepared specifically for you. Whether it's a birthday celebration, a festive occasion, a family gathering, or any special moment worth celebrating, we're here to make it sweeter. From the first mix to the final decoration, we pour our hearts into every cake, ensuring that what reaches you is not just a dessert, but a heartfelt experience.</p>
+        </div>
+    </section>
+
+    <section id="menu" class="section">
+        <h2 class="section-title">Our Special Creations</h2>
+        <div class="menu-grid">
+            <div class="cake-card">
+                <div class="cake-image">🐉</div>
+                <div class="cake-content">
+                    <h3 class="cake-title">Dragon Cupcake</h3>
+                    <p class="cake-description">A playful and magical cupcake inspired by fantasy worlds. Soft, moist, and topped with vibrant dragon-style frosting, this cupcake brings joy to kids and adults alike. The perfect treat for themed parties and special moments.</p>
+                    <div class="price-range">₹80 - ₹150</div>
+                </div>
+            </div>
+
+            <div class="cake-card">
+                <div class="cake-image">🍇</div>
+                <div class="cake-content">
+                    <h3 class="cake-title">Mixed Fruit Cake</h3>
+                    <p class="cake-description">A light, refreshing cake loaded with seasonal fruits. This soft and juicy homemade cake offers a balance of natural sweetness and fresh flavors. Loved by customers who enjoy a healthier and wholesome dessert option.</p>
+                    <div class="price-range">₹350 - ₹850</div>
+                </div>
+            </div>
+
+            <div class="cake-card">
+                <div class="cake-image">🍉</div>
+                <div class="cake-content">
+                    <h3 class="cake-title">Watermelon & Strawberry Cake</h3>
+                    <p class="cake-description">A refreshing, fruity delight made with the coolness of watermelon and the sweetness of strawberries. This cake feels light, clean, and perfect for summer days. Ideal for those who enjoy natural and refreshing flavors.</p>
+                    <div class="price-range">₹350 - ₹850</div>
+                </div>
+            </div>
+
+            <div class="cake-card">
+                <div class="cake-image">🎂</div>
+                <div class="cake-content">
+                    <h3 class="cake-title">Traditional Cake</h3>
+                    <p class="cake-description">A classic homemade cake that brings back nostalgic memories of simple, pure, old-fashioned baking. Soft, rich, and filled with the warmth of traditional flavors, this cake is perfect for festivals, family gatherings, and anyone who loves authentic homemade taste.</p>
+                    <div class="price-range">₹350 - ₹850</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section gallery">
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">🎂</div>
+            <div class="gallery-item">🧁</div>
+            <div class="gallery-item">🍰</div>
+            <div class="gallery-item">🍓</div>
+            <div class="gallery-item">🍇</div>
+            <div class="gallery-item">🍉</div>
+        </div>
+    </section>
+
+    <section class="section testimonials">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Absolutely delicious! The freshness and quality of ingredients really shows. My daughter's birthday party was a huge success thanks to the beautiful dragon cupcakes!"</p>
+                <p class="testimonial-author">- Priya M.</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Finally found a bakery that makes truly homemade cakes! No artificial taste, just pure goodness. The traditional cake reminded me of my grandmother's recipes."</p>
+                <p class="testimonial-author">- Rajesh K.</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"The mixed fruit cake was a hit at our family gathering! So moist and flavorful. You can taste the love and care in every bite. Highly recommended!"</p>
+                <p class="testimonial-author">- Sneha R.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="section order-section">
+        <h2 class="section-title">Order Your Perfect Cake</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Every cake is freshly made to order. Reach out to us and let's create something special for your celebration!</p>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <h3 class="contact-title">Phone</h3>
+                <p class="contact-info">8951626381</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">✉️</div>
+                <h3 class="contact-title">Email</h3>
+                <p class="contact-info">lranjali9@gmail.com</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3 class="contact-title">Location</h3>
+                <p class="contact-info">Bangalore, Karnataka</p>
+            </div>
+        </div>
+
+        <a href="https://wa.me/918951626381?text=Hi%20A%20Nurture!%20I%20would%20like%20to%20order%20a%20cake." class="whatsapp-btn" target="_blank">💬 Order via WhatsApp</a>
+
+        <div class="order-form">
+            <h3 style="color: #4a148c; margin-bottom: 1.5rem; text-align: center;">Quick Order Form</h3>
+            <form>
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="cake-type">Cake Type *</label>
+                    <select id="cake-type" required>
+                        <option value="">Select a cake</option>
+                        <option value="dragon">Dragon Cupcake</option>
+                        <option value="fruit">Mixed Fruit Cake</option>
+                        <option value="watermelon">Watermelon & Strawberry Cake</option>
+                        <option value="traditional">Traditional Cake</option>
+                        <option value="custom">Custom Design</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Delivery Date *</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Special Instructions</label>
+                    <textarea id="message" rows="4" placeholder="Tell us about your preferences, design ideas, or any dietary requirements..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Order Request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">A Nurture</p>
+        <p>Fresh • Pure • Homemade With Love</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com" target="_blank" title="Instagram">📷</a>
+            <a href="https://www.facebook.com" target="_blank" title="Facebook">📘</a>
+            <a href="https://wa.me/918951626381?text=Hi%20A%20Nurture!%20I%20would%20like%20to%20know%20more%20about%20your%20cakes." target="_blank" title="WhatsApp">💬</a>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.8;">© 2024 A Nurture. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">Made with love in Bangalore 💜 | Ramana.g</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderForm = document.querySelector('.order-form form');
+            
+            if (orderForm) {
+                orderForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('name').value.trim();
+                    const phone = document.getElementById('phone').value.trim();
+                    const cakeSelect = document.getElementById('cake-type');
+                    const cakeType = cakeSelect.options[cakeSelect.selectedIndex].text;
+                    const date = document.getElementById('date').value;
+                    const messageField = document.getElementById('message').value.trim();
+                    
+                    // Validation
+                    if (!name || !phone || !cakeSelect.value || !date) {
+                        alert('Please fill in all required fields!');
+                        return;
+                    }
+                    
+                    // Create WhatsApp message
+                    const whatsappText = 
+                        `Hi A Nurture! 🍰\n\n` +
+                        `*New Order Request*\n\n` +
+                        `Name: ${name}\n` +
+                        `Phone: ${phone}\n` +
+                        `Cake Type: ${cakeType}\n` +
+                        `Delivery Date: ${date}\n` +
+                        `Special Instructions: ${messageField || 'None'}`;
+                    
+                    const encodedMessage = encodeURIComponent(whatsappText);
+                    const whatsappURL = `https://wa.me/918951626381?text=${encodedMessage}`;
+                    
+                    // Open WhatsApp
+                    window.open(whatsappURL, '_blank');
+                    
+                    // Show success message
+                    alert('Redirecting to WhatsApp! Please send the pre-filled message to complete your order request.');
+                    
+                    // Optional: Reset form
+                    // orderForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
